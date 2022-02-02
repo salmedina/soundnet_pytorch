@@ -27,6 +27,8 @@ if __name__ == '__main__':
         sel_feats = feats_dict['conv7']
         # [N x C x S x 1] -> [C x S] -> C'
         avg_feats = sel_feats.squeeze().mean(1)
+
+        # Saves on col-wise csv format
         np.savetxt(Path(args.output_dir, f'{feats_path.stem}.csv'),
                    avg_feats,
                    delimiter=';')
