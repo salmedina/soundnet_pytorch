@@ -2,7 +2,7 @@
 
 ![banner](images/soundnet.png)
 
-SoundNet was intialliy implemented in torch, popularized through TF. This is an attempt to make a solid usable repo with a PyTorch port from other repos.
+[SoundNet](http://soundnet.csail.mit.edu/) is a CNN designed trained in an unsupervised manner for audio feature represenations. It was intialliy implemented in torch, popularized through TF. This is an attempt to make a solid usable repo with a PyTorch port from other repos.
 
 The model is defined in `soundnet.py`. As we can see the current version only returns `conv7`, `y_obj`, and `y_scns` features from the model. These can be modified to extract any feature from the CNN in the `forward` function.
 
