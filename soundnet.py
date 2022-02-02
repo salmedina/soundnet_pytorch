@@ -168,32 +168,3 @@ class SoundNet(nn.Module):
 		_, self.conv8_objs = self.put_weights([], self.conv8_objs, params_w, batch_norm=False)
 		params_w = param_G['conv8_2']
 		_, self.conv8_scns = self.put_weights([], self.conv8_scns, params_w, batch_norm=False)
-
-
-# @mem.cache()
-def extract_features():
-	audio_txt = 'audio_files.txt'
-	
-	model = SoundNet()
-	model.load_weights()
-	
-	# Extract Feature
-	sound_samples, audio_paths = load_from_txt(audio_txt, config=local_config)
-	
-	print(LEN_WAVEFORM / 6)
-	print(model)
-	features = {}
-	features['feats'] = []
-	features['paths'] = []
-	model.eval()
-	for idx, sound_sample in enumerate(sound_samples):
-		print(audio_paths[idx])
-		new_sample = torch.from_numpy(sound_sample)
-		output = model.forward(new_sample)
-		features['feats'].append(output)
-		features['paths'].append(audio_paths[idx])
-	return features
-
-
-if __name__ == '__main__':
-	extract_features()
